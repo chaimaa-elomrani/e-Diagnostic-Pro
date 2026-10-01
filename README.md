@@ -5,7 +5,7 @@ Java 17 Maven web application for the medical tele-expertise workflow. The appli
 ## Project layout
 
 - `com.hospital.config` — application and persistence configuration
-- `com.hospital.model` — patient, staff, consultation, expertise, appointment and medical-act models
+- `com.hospital.entity` — `Utilisateur` (with `Infirmier`, `Generaliste` and `Specialiste`), `Patient`, `SignesVitaux`, `FileAttente`, `Consultation`, `DemandeExpertise`, `Creneau` and `ActeTechnique`
 - `com.hospital.enums` — roles, specialties, workflow statuses and priority values
 - `com.hospital.dao` — persistence access
 - `com.hospital.service` — intake, queue, consultation, scheduling, expertise and cost rules

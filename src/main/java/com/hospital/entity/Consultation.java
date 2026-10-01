@@ -1,4 +1,4 @@
-package com.hospital.model;
+package com.hospital.entity;
 
 public class Consultation {
 }
