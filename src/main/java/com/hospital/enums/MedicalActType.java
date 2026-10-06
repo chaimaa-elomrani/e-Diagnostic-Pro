@@ -1,4 +1,2 @@
 package com.hospital.enums;
-
-public enum MedicalActType {
-}
+public enum MedicalActType { RADIOGRAPHIE, ECHOGRAPHIE, IRM, ELECTROCARDIOGRAMME, ACTE_DERMATOLOGIQUE_LASER, FOND_OEIL, ANALYSE_SANG, ANALYSE_URINE }

@@ -1,4 +1,2 @@
 package com.hospital.enums;
-
-public enum MedicalSpecialty {
-}
+public enum MedicalSpecialty { CARDIOLOGIE, PNEUMOLOGIE, DERMATOLOGIE, NEUROLOGIE, ENDOCRINOLOGIE, OPHTALMOLOGIE, ORTHOPEDIE, GYNECOLOGIE, PEDIATRIE, AUTRE }

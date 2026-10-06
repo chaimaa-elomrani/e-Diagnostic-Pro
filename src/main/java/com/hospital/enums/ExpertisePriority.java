@@ -1,4 +1,2 @@
 package com.hospital.enums;
-
-public enum ExpertisePriority {
-}
+public enum ExpertisePriority { URGENTE, NORMALE, NON_URGENTE }
