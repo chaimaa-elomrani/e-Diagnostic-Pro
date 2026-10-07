@@ -1,10 +1,12 @@
 package com.hospital.dao;
 
 import com.hospital.entity.User;
+import com.hospital.enums.Role;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 
 import java.util.List;
+import java.util.Optional;
 
 
 public class UserDao {
@@ -15,7 +17,7 @@ public class UserDao {
         this.entityManager = entityManager;
     }
 
-    public boolean addUser(User user){
+    public boolean save(User user){
         EntityTransaction transaction = entityManager.getTransaction();
         try{
             transaction.begin();
@@ -31,17 +33,50 @@ public class UserDao {
     }
 
 
-    public User findByEmail(String email){
+    public Optional<User> findByEmail(String email){
         List<User> users = entityManager
-                .createQuery("select u from users where email = :email",
+                .createQuery("select u from User u where u.email = :email",
                         User.class)
                 .setParameter("email", email)
                 .getResultList();
         if(users.isEmpty()){
-            return null ;
+            return Optional.empty();
         }
-        return users.get(0);
+        return Optional.of(users.get(0));
     }
+
+
+    public Optional<User> findById(Long id ){
+        List<User> users = entityManager
+                .createQuery("select u from User u where u.id= :id",
+                        User.class)
+                .setParameter("id", id)
+                .getResultList();
+
+        if(users.isEmpty()){
+            return Optional.empty();
+        }
+        return Optional.of(users.get(0));
+    }
+
+    public List<User> findByRole(Role role){
+        return  entityManager
+                .createQuery("select u from User u where u.role = :role",
+                        User.class)
+                .setParameter("role", role)
+                .getResultList();
+
+    }
+
+    public List<User> findAll(){
+        return  entityManager
+                .createQuery("select u from User u ",
+                        User.class)
+                .getResultList();
+
+    }
+
+
 
 
 }
