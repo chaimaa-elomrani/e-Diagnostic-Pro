@@ -2,6 +2,7 @@ package com.hospital.entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "patients")
@@ -26,6 +27,7 @@ public class Patient {
     private String medicalHistory;
     private String allergies;
     private String currentTreatments;
+    private LocalDateTime createdAt;
 
     public Patient() {
     }
