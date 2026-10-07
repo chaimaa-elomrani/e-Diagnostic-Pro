@@ -2,6 +2,7 @@ package com.hospital.service;
 
 import com.hospital.dao.UserDao;
 import com.hospital.entity.User;
+import com.hospital.security.PasswordHasher;
 
 import java.util.Optional;
 
@@ -16,15 +17,14 @@ public class AuthenticationService {
 
     public Optional<User> login(String email , String password){
 
-        Optional<User> Optionaluser = userDao.findByEmail(email);
+        Optional<User> foundUser = userDao.findByEmail(email);
 
-        if(Optionaluser.isEmpty()){
+        if(foundUser.isEmpty()){
             return Optional.empty();
         }
+        User user = foundUser.get();
 
-        User user = Optionaluser.get();
-
-        if(!user.getPassword().equals(password)){
+        if(!PasswordHasher.matches(password, user.getPassword())){
             return Optional.empty();
         }
         return Optional.of(user);
