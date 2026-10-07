@@ -1,42 +1,48 @@
 package com.hospital.entity;
-
-
 import com.hospital.enums.Role;
+import jakarta.persistence.*;
 
-public class User {
 
-    private Long id;
-    private String nom;
-    private String prenom;
+@Entity
+@Table(name = "users")
+public class User{
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id ;
+
+    private String firstname ;
+    private String lastname ;
+
+    @Column(unique = true , nullable = false)
     private String email;
-    private String password;
-    private Role role;
 
+    private String password ;
+
+    @Enumerated(EnumType.STRING)
+    private Role role ;
     public User() {
     }
+
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public String getNom() {
-        return nom;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public String getLastname() {
+        return lastname;
     }
 
-    public String getPrenom() {
-        return prenom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public String getEmail() {
@@ -62,4 +68,5 @@ public class User {
     public void setRole(Role role) {
         this.role = role;
     }
+
 }
