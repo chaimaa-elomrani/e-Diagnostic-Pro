@@ -32,10 +32,27 @@ public class UserDao {
         }
     }
 
+    public void update(User user){
+        EntityTransaction transaction = entityManager.getTransaction();
+        try{
+            transaction.begin();
+            entityManager.merge(user);
+            transaction.commit();
+        } catch (Exception e) {
+            if(transaction.isActive()){
+                transaction.rollback();
+            }
+            throw  e ;
+        }finally{
+            entityManager.close();
+        }
+        
+    }
+
 
     public Optional<User> findByEmail(String email){
-        List<User> users = entityManager
-                .createQuery("select u from User u where u.email = :email",
+        List<User> users =
+                entityManager.createQuery("select u from User u where u.email = :email",
                         User.class)
                 .setParameter("email", email)
                 .getResultList();
@@ -75,6 +92,8 @@ public class UserDao {
                 .getResultList();
 
     }
+
+
 
 
 
