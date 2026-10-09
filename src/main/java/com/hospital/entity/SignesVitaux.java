@@ -57,9 +57,6 @@ import jakarta.persistence.*;
         return taille;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public void setTensionSystolique(Double tensionSystolique) {
         this.tensionSystolique = tensionSystolique;
